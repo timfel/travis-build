@@ -63,7 +63,7 @@ module Travis
             sh.cmd "pushd smalltalkCI-* > /dev/null", echo: false
             sh.cmd "source env_vars"
             if config[:os] == 'linux'
-              File.open('set_rtprio_limit.c', 'w') { |f| f << DATA.read }
+              File.open('set_rtprio_limit.c', 'w') { |f| f << ::DATA.read }
               sh.cmd "gcc -o set_rtprio_limit set_rtprio_limit.c"
               sh.cmd "chmod +x ./set_rtprio_limit"
               sh.cmd "sudo ./set_rtprio_limit $$"
